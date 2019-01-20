@@ -1,8 +1,6 @@
 # Dcxpusher
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dcxpusher`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A tiny library to use dcxpusher as pub/sub.
 
 ## Installation
 
@@ -22,7 +20,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create initializer file with following content. - config/initializers/dcxpusher.rb
+
+```ruby
+Dcxpusher.configure do |config|
+  config.base_url = "base_url"
+  config.key = "key"
+  config.secret = "secret"
+end
+```
+
+How to authenticate:
+```ruby
+channel="update"
+socket = "134498979879879897234" # socket id
+Dcxpusher.authenticate channel, socket
+```
+
+How to trigger:
+```ruby
+channel = "update"
+event = "balance"
+payload = {
+  balance: 10.0
+}
+
+Dcxpusher.trigger channel, event, payload
+```
+
 
 ## Development
 
@@ -32,7 +57,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/dcxpusher. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/snmspace/dcxpusher. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +65,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Dcxpusher project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/dcxpusher/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Dcxpusher project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/snmspace/dcxpusher/blob/master/CODE_OF_CONDUCT.md).
