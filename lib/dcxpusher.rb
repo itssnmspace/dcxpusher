@@ -1,4 +1,5 @@
 require "dcxpusher/version"
+require "dcxpusher/dcxpusher_config"
 require "dcxpusher/external"
 require "dcxpusher/internal"
 

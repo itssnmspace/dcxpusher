@@ -1,8 +1,7 @@
 module Internal
   module ClassMethods
     def authenticate channel, socket
-      payload = {'channel' => channel, 'socket' => socket}.to_json
-      OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), Dcxpusher.configuration.secret, payload)
+      DcxpusherConfig.new.signature({'channel' => channel, 'socket' => socket})
     end
   end
 
